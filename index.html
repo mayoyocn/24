@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -11,7 +11,6 @@
             box-sizing: border-box;
             font-family: "Microsoft Yahei", sans-serif;
         }
-
         body {
             min-height: 100vh;
             /* 绚丽渐变背景动画 */
@@ -21,13 +20,11 @@
             color: #fff;
             overflow-x: hidden;
         }
-
         @keyframes bgGradient {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
-
         /* 粒子光斑装饰 */
         .light-dot {
             position: fixed;
@@ -39,12 +36,10 @@
         .dot1 { width: 180px; height: 180px; background: rgba(255,255,255,0.3); top: 10%; left: 8%; animation-delay: 0s; }
         .dot2 { width: 240px; height: 240px; background: rgba(255,100,200,0.25); top: 60%; right: 10%; animation-delay: 2s; }
         .dot3 { width: 120px; height: 120px; background: rgba(100,220,255,0.3); bottom: 15%; left: 25%; animation-delay: 4s; }
-
         @keyframes float {
             0%,100% { transform: translateY(0) scale(1); }
             50% { transform: translateY(-30px) scale(1.1); }
         }
-
         .container {
             position: relative;
             z-index: 2;
@@ -53,7 +48,6 @@
             padding: 60px 20px;
             text-align: center;
         }
-
         /* 主标题 */
         .main-title {
             font-size: 72px;
@@ -67,7 +61,6 @@
             from { filter: brightness(1); }
             to { filter: brightness(1.3); }
         }
-
         /* 副标题区域样式 */
         .sub-title-wrap {
             margin-bottom: 30px;
@@ -83,10 +76,17 @@
             margin: 10px 0;
             letter-spacing: 1px;
         }
-        /* 单个职业区块，加宽左右间距 */
+        /* ===== 常驻职业：改用flex，自动换行、上下对齐 ===== */
+        .spec-list-flex {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 22px 26px;   /* 行间距、列间距 */
+            margin-top:8px;
+        }
         .spec-block {
-            display: inline-block;
-            margin: 0 22px;
+            display:flex;
+            align-items:center;  /* 图标与文字垂直居中 */
         }
         .wow-icon {
             display: inline-block;
@@ -119,14 +119,12 @@
         .balance-druid { background: #ff7d0a; }
         .priest { background: #ffffff; }
         .dkt { background: #c41e3a; }
-
         .card-wrap {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
             margin-top: 20px;
         }
-
         .info-card {
             background: rgba(255,255,255,0.12);
             backdrop-filter: blur(14px);
@@ -141,7 +139,6 @@
             background: rgba(255,255,255,0.18);
             box-shadow: 0 12px 40px rgba(0,0,0,0.25);
         }
-
         .card-title {
             font-size: 24px;
             margin-bottom: 20px;
@@ -156,7 +153,6 @@
             margin-top: 12px;
             opacity: 0.8;
         }
-
         /* 倒计时数字样式 */
         .countdown-box {
             display: flex;
@@ -178,7 +174,6 @@
             font-size: 14px;
             opacity: 0.8;
         }
-
         footer {
             margin-top: 80px;
             font-size: 14px;
@@ -191,10 +186,8 @@
     <div class="light-dot dot1"></div>
     <div class="light-dot dot2"></div>
     <div class="light-dot dot3"></div>
-
     <div class="container">
         <h1 class="main-title">I LOVE MAYOYO</h1>
-
         <!-- 副标题区域 -->
         <div class="sub-title-wrap">
             <div class="sub-line">
@@ -205,21 +198,22 @@
             </div>
             <div class="sub-line">
                 常驻职业：
-                <span class="spec-block">
-                    <span class="spec-icon ele-sham">萨</span>（怀）电萨 · 清野菜名   / （正）电萨 · 寶寶淘氣
-                </span>
-                <span class="spec-block">
-                    <span class="spec-icon balance-druid">德</span>（怀）鸟德 · 上白石萌音  / （正）熊T · 淘氣寶寶
-                </span>
-                <span class="spec-block">
-                    <span class="spec-icon priest">牧</span>（怀）牧师 · 黑岛结菜   / （正）牧师 · 上野树里
-                </span>
-                <span class="spec-block">
-                    <span class="spec-icon dkt">DK</span>（怀）DKT · 上白石萌歌
-                </span>
+                <div class="spec-list-flex">
+                    <div class="spec-block">
+                        <span class="spec-icon ele-sham">萨</span>（怀）电萨 · 清野菜名   / （正）电萨 · 寶寶淘氣
+                    </div>
+                    <div class="spec-block">
+                        <span class="spec-icon balance-druid">德</span>（怀）鸟德 · 上白石萌音  / （正）熊T · 淘氣寶寶
+                    </div>
+                    <div class="spec-block">
+                        <span class="spec-icon priest">牧</span>（怀）牧师 · 黑岛结菜   / （正）牧师 · 上野树里
+                    </div>
+                    <div class="spec-block">
+                        <span class="spec-icon dkt">DK</span>（怀）DKT · 上白石萌歌
+                    </div>
+                </div>
             </div>
         </div>
-
         <div class="card-wrap">
             <!-- 实时日期时间 -->
             <div class="info-card">
@@ -227,7 +221,6 @@
                 <div class="card-text" id="nowTime">加载中...</div>
                 <div class="small-text" id="nowDate"></div>
             </div>
-
             <!-- 倒计时模块 -->
             <div class="info-card">
                 <h3 class="card-title">⏳ 目标倒计时</h3>
@@ -251,7 +244,6 @@
                     </div>
                 </div>
             </div>
-
             <!-- 天气模块 -->
             <div class="info-card">
                 <h3 class="card-title">🌤 今日天气</h3>
@@ -259,12 +251,10 @@
                 <div class="small-text">江苏镇江 · 湿度52% · 微风2级</div>
             </div>
         </div>
-
         <footer>
             I LOVE MAYOYO © 2026
         </footer>
     </div>
-
     <script>
         // 1. 实时日期时间
         function updateTime() {
@@ -277,13 +267,11 @@
             const h = String(now.getHours()).padStart(2,'0');
             const m = String(now.getMinutes()).padStart(2,'0');
             const s = String(now.getSeconds()).padStart(2,'0');
-
             document.getElementById("nowTime").innerText = `${h}:${m}:${s}`;
             document.getElementById("nowDate").innerText = `${year}年${month}月${day}日 ${week}`;
         }
         setInterval(updateTime, 1000);
         updateTime();
-
         // 2. 倒计时（目标：2027-01-01 00:00:00）
         function countDown() {
             const target = new Date("2027-01-01 00:00:00");
@@ -300,7 +288,6 @@
             const h = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
             const mi = Math.floor((diff % (1000*60*60)) / (1000*60));
             const se = Math.floor((diff % (1000*60)) / 1000);
-
             document.getElementById("day").innerText = String(d).padStart(2,'0');
             document.getElementById("hour").innerText = String(h).padStart(2,'0');
             document.getElementById("min").innerText = String(mi).padStart(2,'0');
